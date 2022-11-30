@@ -12,36 +12,31 @@ export class ConsoleComponent implements AfterViewInit {
   userInput: any = '';
   terminalOutput: any = '';
 
-  constructor() {
-    //console.log(this.binding) 
-    //document.getElementById('dummykeyboard')?.focus()
-  }
+  constructor() { }
 
   ngAfterViewInit(): void {
-    document.addEventListener("keydown", this.backspace);
-    document.addEventListener("keypress", this.key);
+    const _onBackspacePress = this.backspace.bind(this)
+    document.addEventListener("keydown", _onBackspacePress);
+    const _onKeyPress = this.key.bind(this);
+    document.addEventListener("keypress", _onKeyPress);
     this.userInput = document.getElementById("userInput");
     this.terminalOutput = document.getElementById("terminalOutput");
-    console.log(this.COMMANDS)
   }
 
   backspace(e: KeyboardEvent) {
     if (e.key !== 'Backspace' && e.key !== 'Delete') {
       return;
     }
+    console.log(this.userInput.innerHTML)
     this.userInput.innerHTML = this.userInput.innerHTML.slice(0, this.userInput.innerHTML.length - 1);
   }
 
   key(e: KeyboardEvent) {
-    
+
     this.userInput = document.getElementById("userInput");
     const input = this.userInput.innerHTML;
-    console.log("1234123123")
     if (e.key === "Enter") {
-      
-      console.log(input);
-      this.yazdir()
-      
+
       this.deneme(input);
       this.userInput.innerHTML = "";
       return;
@@ -49,19 +44,19 @@ export class ConsoleComponent implements AfterViewInit {
     this.userInput.innerHTML = input + e.key;
   }
 
-  yazdir() {
-    console.log("emir")
-  }
-
-  private deneme(input: string) {
+  deneme(input: string) {
     console.log(input)
-    /* let output
+    let output
     output = `<div class="terminal-line"><span class="success">➜</span> <span class="directory">~</span> ${input}</div>`;
     if (!this.COMMANDS.hasOwnProperty(input)) {
       output += `<div class="terminal-line">no such command: <span class="output">"${input}"</span></div>`;
     } else {
       output += `<div class="output"> ${this.COMMANDS[input]} </div>`;
-    } */
+    }
+
+    this.terminalOutput.innerHTML = `${this.terminalOutput.innerHTML
+      }<div class="terminal-line text-white">${output}</div>`;
+    this.terminalOutput.scrollTop = this.terminalOutput.scrollHeight;
   }
 
   COMMANDS: any = {
