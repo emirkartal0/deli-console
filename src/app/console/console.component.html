@@ -1,4 +1,4 @@
-<div id="page" class="hero-body bg-[#0d0f17] w-screen h-screen">
+<div id="page" class="hero-body bg-[#0d0f17] w-screen h-screen  overflow-auto">
     <div class="containerrr p-2">
         <div class="columns">
             <div class="column is-flex">
@@ -6,15 +6,15 @@
                     <div class="terminal-window primary-bg p-5 flex flex-col" onclick="document.getElementById('dummyKeyboard').focus();">
                         <div class="terminal-output overflow-auto overflow-y-hidden" id="terminalOutput">
                             <div class="terminal-line">
-                                <span class="help-msg text-[#bdb9bf]">Welcome to Deli's Terminal ! ✈️
+                                <span class="help-msg text-stone-300">Welcome to Deli's Terminal ! ✈️
                                     <span class="text-blue-500">help</span> for a list of supported
                                     commands.</span>
                             </div>
                         </div>
-                        <div class="terminal-line relative text-[#b0b2b6] mt-3">
-                            <span class="success text-[#8dd39e]">➜</span>
-                            <span class="directory ml-2 text-[#75e1e7]">~</span>
-                            <span class="user-input ml-2 relative text-[#bdb9bf]" id="userInput">{{binding}}</span>
+                        <div class="terminal-line relative mt-3">
+                            <span class="success text-yellow-300">➜</span>
+                            <span class="directory ml-2 text-yellow-200">~</span>
+                            <span class="user-input ml-2 relative text-stone-300" id="userInput">{{binding}}</span>
                             <input type="text" name="dummyKeyboard" id="dummyKeyboard" height="500px" autofocus=true class="dummy-keyboard text-[#bdb9bf] opacity-0" autocomplete="off"
                                 [(ngModel)]="binding" />
                         </div>

@@ -1,4 +1,3 @@
-import { NgIfContext } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
@@ -12,6 +11,7 @@ export class ConsoleComponent implements AfterViewInit {
   userInput: any = '';
   terminalOutput: any = '';
 
+  kosul = 'evet'
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -36,46 +36,45 @@ export class ConsoleComponent implements AfterViewInit {
     this.userInput = document.getElementById("userInput");
     const input = this.userInput.innerHTML;
     if (e.key === "Enter") {
-
-      this.deneme(input);
+      this.execute(input);
       this.userInput.innerHTML = "";
       return;
     }
     this.userInput.innerHTML = input + e.key;
   }
 
-  deneme(input: string) {
-    console.log(input)
+  execute(input: string) {
     let output
-    output = `<div class="terminal-line"><span class="success">➜</span> <span class="directory">~</span> ${input}</div>`;
+    input = input.toLowerCase();
+
+    output = `<div class="terminal-line "><span class="success">➜</span> <span class="directory">~</span> ${input}</div>`;
     if (!this.COMMANDS.hasOwnProperty(input)) {
-      output += `<div class="terminal-line">no such command: <span class="output">"${input}"</span></div>`;
+      output += `<div class="terminal-line text-red-500 ">no such command: <span class="output">"${input}"</span></div>`;
     } else {
-      output += `<div class="output"> ${this.COMMANDS[input]} </div>`;
+      output += `<div class="output text-[#2afc14]"> ${this.COMMANDS[input]} </div>`;
     }
 
     this.terminalOutput.innerHTML = `${this.terminalOutput.innerHTML
-      }<div class="terminal-line text-white">${output}</div>`;
+      }<div class="terminal-line text-stone-300">${output}</div>`;
     this.terminalOutput.scrollTop = this.terminalOutput.scrollHeight;
+    console.log(this.terminalOutput.scrollHeight)
   }
 
   COMMANDS: any = {
-    help: 'Supported commands: ["<span class="code">about</span>", "<span class="code">experience</span>", "<span class="code">education</span>", "<span class="code">skills</span>", "<span class="code">contact</span>"]',
+    help: 'Supported commands: ["<span class="text-blue-500">about</span>", "<span class="text-blue-500">experience</span>", "<span class="text-blue-500">education</span>", "<span class="text-blue-500">skills</span>", "<span class="text-blue-500">contact</span>"]',
     about:
-      "Hello 👋<br>I'm Twan Mulder. I'm a 23 yr old web developer currently living in the Netherlands. I have a burning passion to want and help others with code that I create. I enjoy the limitless potential of impact that I can have with what I build. It is what pushes me every day to become a better developer.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     skills:
-      '<span class="code">Languages:</span> HTML, CSS, JavaScript<br><span class="code">Technologies:</span> Git, REST API\'s<br><span class="code">Frameworks:</span> React.js, Redux, GSAP, Sass, Vue.js',
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     education:
-      "B.Sc. Interactive Media & Technologies - Hanze University of Applied Sciences, Groningen",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     experience:
-      "I'm currently working as a front-end developer at Storm Digital. My main areas of focus are helping our creative team build succesful digital creatives, and developing A/B tests for our CRO team.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     contact:
-      'You can contact me on any of the following links:<br>["<a target="_blank" rel="noopener noreferrer" href="https://github.com/twanmulder" class="social link">GitHub</a>", "<a target="_blank" rel="noopener noreferrer" href="https://medium.com/@toktoktwan" class="social link">Medium</a>", "<a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/toktoktwan/" class="social link">Twitter</a>"]',
-    bob: "<span style='font-size: 2rem;'>🐕</span>",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    deli: "<span class='text-blue-500' style='font-size: 5rem;'>✈️</span>",
     party: "🎉🎉🎉",
-    beer:
-      '["<a target="_blank" rel="noopener noreferrer" href="https://anytimers.netlify.com" class="social link">Anytimers!</a>"]',
-    "sudo rm -rf": ""
+    beer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
   };
 
 }
