@@ -1,24 +1,25 @@
-<div id="page" class="hero-body bg-[#0d0f17] w-screen h-screen  overflow-auto">
-    <div class="containerrr p-2">
-        <div class="columns">
-            <div class="column is-flex">
-                <div class="column-child terminal shadow overflow-hidden">
-                    <div class="terminal-window primary-bg p-5 flex flex-col" onclick="document.getElementById('dummyKeyboard').focus();">
-                        <div class="terminal-output overflow-auto overflow-y-hidden" id="terminalOutput">
-                            <div class="terminal-line">
-                                <span class="help-msg text-stone-300">Welcome to Deli's Terminal ! ✈️
-                                    <span class="text-blue-500">help</span> for a list of supported
-                                    commands.</span>
-                            </div>
-                        </div>
-                        <div class="terminal-line relative mt-3">
-                            <span class="success text-yellow-300">➜</span>
-                            <span class="directory ml-2 text-yellow-200">~</span>
-                            <span class="user-input ml-2 relative text-stone-300" id="userInput">{{binding}}</span>
-                            <input type="text" name="dummyKeyboard" id="dummyKeyboard" height="500px" autofocus=true class="dummy-keyboard text-[#bdb9bf] opacity-0" autocomplete="off"
-                                [(ngModel)]="binding" />
-                        </div>
+<div class="bg-[#0d0f17] w-screen h-screen overflow-auto">
+    <div class="p-2">
+        <div class="overflow-hidden">
+            <div 
+                class="p-5 flex flex-col"
+                onclick="document.getElementById('dummyKeyboard').focus();"
+                >
+                <div class="overflow-auto overflow-y-hidden" id="terminalOutput">
+                    <div>
+                        <span class="help-msg text-stone-300">Welcome to Deli's Terminal ! ✈️
+                        <span class="text-blue-500">help</span> for a list of supported commands.</span>
                     </div>
+                </div>
+                <div class="mt-3">
+                    <span class="success text-cyan-500 [#64ffc8]">➜</span>
+                    <span class="directory ml-2 text-cyan-400">deli: ~</span>
+                    <span class="user-input ml-2 relative text-stone-300" id="userInput">{{terminalInput}}</span>
+                    <input 
+                        type="text" name="dummyKeyboard" id="dummyKeyboard" height="500px" autofocus=true
+                        class="dummy-keyboard text-[#bdb9bf] opacity-0" autocomplete="off" 
+                        [(ngModel)]="terminalInput" 
+                    />
                 </div>
             </div>
         </div>
